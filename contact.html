@@ -55,10 +55,11 @@
     <div class="container grid grid-2" style="align-items:start;">
 
       <div class="card">
-        <div class="build-note">This form is wired for Formspree (not Netlify Forms — Netlify's email notifications now require a Pro plan, and neither service is HIPAA-compliant, so keep this form free of health details). Before launch: create a free form at formspree.io, copy the endpoint it gives you (looks like https://formspree.io/f/xxxxxxxx), and paste it into the form's "action" attribute below, replacing the placeholder.</div>
+        <div class="build-note">Do one real test submission after this deploys to confirm it reaches the inbox (Formspree may ask you to confirm the destination email the first time).</div>
 
-        <form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+        <form action="https://formspree.io/f/xyeyplqe" method="POST">
           <input type="hidden" name="_subject" value="New consultation request — Western Retirement Advisors">
+          <input type="hidden" name="_next" value="https://www.westernretirementadvisors.com/thank-you.html">
           <p class="visually-hidden">
             <label>Don't fill this out if you're human: <input name="_gotcha"></label>
           </p>
