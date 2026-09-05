@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Free Consultation | Western Retirement Advisors</title>
+<meta name="description" content="Request a free, no-obligation quote or schedule a consultation with Western Retirement Advisors.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-top">
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="Western Retirement Advisors">
+    </a>
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+15555550100">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (555) 555-0100
+      </a>
+      <a class="btn btn-navy" href="contact.html">Get a Free Quote</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="plan-options.html">Plan Options</a>
+      <a href="company.html">Company</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Get a free, no-obligation quote</h1>
+      <p class="lede">Tell us a bit about what you're looking for and we'll follow up to schedule a free consultation — by phone, video, or in person.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container grid grid-2" style="align-items:start;">
+
+      <div class="card">
+        <div class="build-note">This form is wired for Formspree (not Netlify Forms — Netlify's email notifications now require a Pro plan, and neither service is HIPAA-compliant, so keep this form free of health details). Before launch: create a free form at formspree.io, copy the endpoint it gives you (looks like https://formspree.io/f/xxxxxxxx), and paste it into the form's "action" attribute below, replacing the placeholder.</div>
+
+        <form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New consultation request — Western Retirement Advisors">
+          <p class="visually-hidden">
+            <label>Don't fill this out if you're human: <input name="_gotcha"></label>
+          </p>
+
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="first-name">First name</label>
+              <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="field">
+              <label for="last-name">Last name</label>
+              <input type="text" id="last-name" name="last-name" required>
+            </div>
+          </div>
+
+          <div class="form-grid cols-2" style="margin-top:18px;">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:18px;">
+            <label for="interest">What are you interested in?</label>
+            <select id="interest" name="interest">
+              <option>Medicare &amp; Health Insurance</option>
+              <option>Long Term Care &amp; Critical Illness</option>
+              <option>Guaranteed Lifetime Income</option>
+              <option>Life Insurance &amp; End of Life Planning</option>
+              <option>Not sure — I'd like guidance</option>
+            </select>
+          </div>
+
+          <div class="field" style="margin-top:18px;">
+            <label for="contact-time">Best time to reach you</label>
+            <select id="contact-time" name="contact-time">
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+              <option>No preference</option>
+            </select>
+          </div>
+
+          <div class="field" style="margin-top:18px;">
+            <label for="message">Anything else we should know?</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <p class="form-note" style="margin-top:8px;">For your privacy, please don't include health details, Social Security numbers, or Medicare ID numbers here — we'll collect anything sensitive securely once we're in touch by phone.</p>
+          </div>
+
+          <p class="form-note" style="margin-top:14px;">By submitting, you agree to be contacted by Western Retirement Advisors about your inquiry. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:18px;">Request My Free Quote</button>
+        </form>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:24px;">
+          <h3>Prefer to talk now?</h3>
+          <p>Call us directly — we're happy to answer quick questions or get you scheduled.</p>
+          <a class="btn btn-ghost-navy btn-block" href="tel:+15555550100">Call (555) 555-0100</a>
+        </div>
+        <div class="card">
+          <h3>What happens next</h3>
+          <ul class="check-list">
+            <li>We'll follow up within one business day</li>
+            <li>A free, no-obligation consultation</li>
+            <li>A clear comparison of plans that fit your needs</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logo-white.png" alt="Western Retirement Advisors" style="height:48px;margin-bottom:14px;">
+        <p>Helping retirees and pre-retirees navigate Medicare, health insurance, income, and legacy planning.</p>
+      </div>
+      <div>
+        <h4>Plan Options</h4>
+        <a href="medicare-health-insurance.html">Medicare &amp; Health Insurance</a>
+        <a href="plan-options.html#long-term-care">Long Term Care &amp; Critical Illness</a>
+        <a href="plan-options.html#guaranteed-income">Guaranteed Lifetime Income</a>
+        <a href="plan-options.html#legacy">Life Insurance &amp; End of Life</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="company.html">About Us</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+15555550100">(555) 555-0100</a>
+        <a href="mailto:info@westernretirementadvisors.com">info@westernretirementadvisors.com</a>
+        <p style="color:rgba(255,255,255,.6);">Oregon &amp; the Pacific West</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Western Retirement Advisors. All rights reserved.</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a></span>
+    </div>
+    <p class="footer-disclosure">Western Retirement Advisors offers insurance and retirement planning services and does not offer every plan available in your area. Any information provided is limited to the plans offered. Contact Medicare.gov or 1-800-MEDICARE for information on all your options. <em>Placeholder disclosure — replace with your firm's licensed compliance language before launch.</em></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
