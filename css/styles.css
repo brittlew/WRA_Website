@@ -454,6 +454,24 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   margin-bottom: 18px;
 }
 
+/* Advisor bio — photo wraps at the top, copy flows full-width once past it */
+.advisor-bio { max-width: 820px; margin: 0 auto; }
+.advisor-bio::after { content: ""; display: table; clear: both; }
+.advisor-photo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 24px;
+  border-radius: 10px;
+}
+@media (min-width: 700px) {
+  .advisor-photo {
+    float: left;
+    width: 280px;
+    margin: 4px 28px 16px 0;
+  }
+}
+
 /* Avatar placeholder */
 .avatar-placeholder {
   width: 100%;
