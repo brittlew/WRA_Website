@@ -90,14 +90,24 @@
           </div>
 
           <div class="field" style="margin-top:18px;">
-            <label for="interest">What are you interested in?</label>
-            <select id="interest" name="interest">
-              <option>Medicare &amp; Health Insurance</option>
-              <option>Long Term Care &amp; Critical Illness</option>
-              <option>Guaranteed Lifetime Income</option>
-              <option>Life Insurance &amp; End of Life Planning</option>
-              <option>Not sure — I'd like guidance</option>
+            <label for="state">State you live in</label>
+            <select id="state" name="state" required>
+              <option value="" selected disabled>Select your state</option>
+              <option>California</option>
+              <option>Oregon</option>
+              <option>Washington</option>
             </select>
+          </div>
+
+          <div class="field" style="margin-top:18px;">
+            <span style="display:block; font-weight:700; font-size:0.88rem; color:var(--navy-800); margin-bottom:6px;">What are you interested in? <span style="font-weight:400; color:var(--ink-soft);">(select all that apply)</span></span>
+            <div class="checkbox-group" role="group" aria-label="What are you interested in?">
+              <label class="checkbox-option"><input type="checkbox" name="interest" value="Medicare & Health Insurance"> Medicare &amp; Health Insurance</label>
+              <label class="checkbox-option"><input type="checkbox" name="interest" value="Long Term Care & Critical Illness"> Long Term Care &amp; Critical Illness</label>
+              <label class="checkbox-option"><input type="checkbox" name="interest" value="Guaranteed Lifetime Income"> Guaranteed Lifetime Income</label>
+              <label class="checkbox-option"><input type="checkbox" name="interest" value="Life Insurance & End of Life Planning"> Life Insurance &amp; End of Life Planning</label>
+              <label class="checkbox-option"><input type="checkbox" name="interest" value="Not sure — I'd like guidance"> Not sure — I'd like guidance</label>
+            </div>
           </div>
 
           <div class="field" style="margin-top:18px;">

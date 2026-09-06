@@ -424,6 +424,35 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
 .field { margin-bottom: 4px; }
 .form-note { font-size: 0.85rem; color: var(--ink-soft); }
 
+/* Checkbox group (multi-select alternative to a native <select>) */
+.checkbox-group {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.checkbox-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.checkbox-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+  padding: 0;
+  accent-color: var(--blue-500);
+}
+
 /* Footer */
 .site-footer { background: var(--navy-900); color: rgba(255,255,255,0.75); padding: 56px 0 24px; }
 .site-footer h4 { color: var(--white); font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
