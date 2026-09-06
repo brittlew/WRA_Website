@@ -53,6 +53,22 @@ document.addEventListener('DOMContentLoaded', function () {
       var nextField = form.querySelector('input[name="_next"]');
       var destination = (nextField && nextField.value) ? nextField.value : 'thank-you.html';
 
+      // Route California inquiries to WRA Insurance Solutions' own Formspree
+      // form (its own inbox + destination email), everyone else to the
+      // default Western Retirement Advisors form.
+      var stateField = form.querySelector('#state');
+      var caAction = form.getAttribute('data-ca-action');
+      var isCalifornia = stateField && stateField.value === 'California';
+      var submitUrl = (isCalifornia && caAction) ? caAction : form.action;
+
+      var subjectField = form.querySelector('input[name="_subject"]');
+      if (subjectField) {
+        var caSubject = subjectField.getAttribute('data-ca-subject');
+        var defaultSubject = subjectField.getAttribute('data-default-subject') || subjectField.defaultValue;
+        subjectField.setAttribute('data-default-subject', defaultSubject);
+        subjectField.value = (isCalifornia && caSubject) ? caSubject : defaultSubject;
+      }
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
@@ -61,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         errorNote.style.display = 'none';
       }
 
-      fetch(form.action, {
+      fetch(submitUrl, {
         method: form.method || 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
