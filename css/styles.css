@@ -3,15 +3,15 @@
    =========================================================== */
 
 :root {
-  /* Brand palette (pulled from logo + Wix reference) */
-  --navy-900: #142c46;
-  --navy-800: #1e3a5f;
-  --navy-700: #28496f;
-  --blue-500: #4a7bc8;
-  --blue-300: #7fa4dc;
-  --blue-100: #e4edf9;
-  --sand-100: #f2ece1;
-  --sand-200: #e8ded0;
+  /* Brand palette (official hex values from WRA brand guide) */
+  --navy-900: #14243a;
+  --navy-800: #1f3b68;
+  --navy-700: #25477d;
+  --blue-500: #2f5ca5;
+  --blue-300: #4180e5;
+  --blue-100: #f0f6ff;
+  --sand-100: #efece5;
+  --sand-200: #e2dcd0;
   --ink: #2a3441;
   --ink-soft: #5b6675;
   --white: #ffffff;
@@ -305,6 +305,60 @@ section { padding: 72px 0; }
   text-decoration: none;
 }
 .plan-card-list a:hover { color: var(--white); text-decoration: underline; }
+
+/* Plan tiles (homepage — 2x2 Wix-style cards) */
+.plan-tile-grid { grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .plan-tile-grid { grid-template-columns: 1fr 1fr; }
+}
+.plan-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow .15s ease;
+}
+.plan-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.plan-tile-icon { color: var(--navy-800); margin-bottom: 20px; }
+.plan-tile-icon svg { width: 44px; height: 44px; display: block; }
+.plan-tile > a { text-decoration: none; }
+.plan-tile h3 {
+  color: var(--blue-300);
+  font-size: 1.7rem;
+  margin-bottom: 18px;
+}
+.plan-tile > a:hover h3 { text-decoration: underline; }
+.plan-tile p.plan-tile-intro { color: var(--navy-800); }
+.plan-tile-list { list-style: none; margin: 0 0 26px; padding: 0; }
+.plan-tile-list li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.plan-tile-list li::before { content: "•"; position: absolute; left: 0; color: var(--navy-800); }
+.plan-tile-list a { color: var(--navy-800); }
+.plan-tile-list a:hover { text-decoration: underline; }
+
+/* Topic blocks (detail pages — full-width sections with dark header) */
+.topic-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 28px;
+}
+.topic-block-header { background: var(--navy-800); padding: 18px 30px; }
+.topic-block-header h3 { color: var(--white); margin: 0; }
+.topic-block-body { padding: 30px; }
+.topic-block-intro { font-size: 1.05rem; }
+.topic-block-grid { display: grid; gap: 24px; }
+@media (min-width: 700px) {
+  .topic-block-grid { grid-template-columns: 1fr 1fr; }
+}
+.topic-block-grid p:last-child { margin-bottom: 0; }
 
 /* Checklist */
 .check-list { list-style: none; margin: 0; padding: 0; }
