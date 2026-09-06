@@ -63,8 +63,8 @@
         <form action="https://formspree.io/f/xyeyplqe" method="POST">
           <input type="hidden" name="_subject" value="New consultation request — Western Retirement Advisors">
           <input type="hidden" name="_next" value="https://www.westernretirementadvisors.com/thank-you.html">
-          <p class="visually-hidden">
-            <label>Don't fill this out if you're human: <input name="_gotcha"></label>
+          <p style="display:none;" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </p>
 
           <div class="form-grid cols-2">
