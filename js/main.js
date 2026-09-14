@@ -15,6 +15,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Hero background parallax: shift the background photo slightly slower
+  // than the page scrolls, for a subtle parallax feel. Skipped entirely for
+  // visitors who've asked for reduced motion.
+  var heroBgImage = document.querySelector('.hero-bg-image');
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroBgImage && !prefersReducedMotion) {
+    var heroSection = document.querySelector('.hero');
+    var ticking = false;
+    var updateParallax = function () {
+      var rect = heroSection.getBoundingClientRect();
+      // Only bother once the hero has scrolled at least partly out of view.
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        var offset = window.scrollY * 0.18;
+        heroBgImage.style.transform = 'translateY(' + offset + 'px)';
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+    updateParallax();
+  }
+
   // Mark current page's nav link active
   var here = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.main-nav a').forEach(function (link) {
