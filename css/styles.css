@@ -195,18 +195,8 @@ section { padding: 72px 0; }
   overflow: hidden;
   padding: 96px 0 84px;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 140px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath d='M0 90 C 200 30 400 130 600 70 S 1000 20 1200 80 L1200 140 L0 140 Z' fill='rgba(255,255,255,0.06)'/%3E%3Cpath d='M0 110 C 220 60 420 140 640 90 S 980 50 1200 110 L1200 140 L0 140 Z' fill='rgba(255,255,255,0.10)'/%3E%3C/svg%3E") bottom / cover no-repeat;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Hero background photo: grayscale image + navy tint, moved slightly by JS
-   scroll (see js/main.js) for a subtle parallax effect. */
+/* Hero background photo: static grayscale image + navy tint (no motion —
+   the parallax effect lives in the mountain divider below instead). */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -215,14 +205,10 @@ section { padding: 72px 0; }
 }
 .hero-bg-image {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: -18%;
-  height: 136%;
+  inset: 0;
   background-size: cover;
   background-position: center;
   filter: grayscale(100%) contrast(1.05) brightness(0.9);
-  will-change: transform;
 }
 .hero-bg-tint {
   position: absolute;
@@ -251,11 +237,27 @@ section { padding: 72px 0; }
 .hero-stats .stat-num { font-family: var(--font-display); font-size: 2.1rem; color: var(--white); font-weight: 700; }
 .hero-stats .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
 
-/* Mountain divider motif */
+/* Mountain divider motif: a photo clipped into the same jagged mountain
+   silhouette that used to be a flat SVG fill. The photo layer inside is
+   oversized and shifted by JS scroll (see js/main.js) for a parallax feel —
+   this is the "peek of a moving layer below a solid section" effect. */
 .mountain-divider {
+  position: relative;
   width: 100%;
-  height: 64px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 64'%3E%3Cpath d='M0 64 L150 12 L260 44 L400 4 L520 44 L650 20 L800 50 L950 10 L1080 40 L1200 18 L1200 64 Z' fill='%23e8ded0'/%3E%3C/svg%3E") center / cover no-repeat;
+  height: 130px;
+  overflow: hidden;
+  background: var(--sand-100);
+  clip-path: polygon(0% 100%, 12.5% 18.75%, 21.667% 68.75%, 33.333% 6.25%, 43.333% 68.75%, 54.167% 31.25%, 66.667% 78.125%, 79.167% 15.625%, 90% 62.5%, 100% 28.125%, 100% 100%);
+}
+.mountain-divider-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -35%;
+  height: 170%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
 }
 
 /* ===== Cards / grids ===== */

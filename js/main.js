@@ -15,20 +15,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Hero background parallax: shift the background photo slightly slower
-  // than the page scrolls, for a subtle parallax feel. Skipped entirely for
-  // visitors who've asked for reduced motion.
-  var heroBgImage = document.querySelector('.hero-bg-image');
+  // Mountain-divider parallax: the hero photo itself stays solid/static;
+  // instead the divider strip below it (clipped into the mountain silhouette)
+  // shifts slightly slower than the page scrolls, so it reads as a moving
+  // layer peeking out beneath the solid hero. Skipped entirely for visitors
+  // who've asked for reduced motion.
+  var dividerImage = document.querySelector('.mountain-divider-image');
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (heroBgImage && !prefersReducedMotion) {
-    var heroSection = document.querySelector('.hero');
+  if (dividerImage && !prefersReducedMotion) {
+    var dividerSection = document.querySelector('.mountain-divider');
     var ticking = false;
     var updateParallax = function () {
-      var rect = heroSection.getBoundingClientRect();
-      // Only bother once the hero has scrolled at least partly out of view.
+      var rect = dividerSection.getBoundingClientRect();
+      // Only bother once the divider has scrolled at least partly into view.
       if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        var offset = window.scrollY * 0.18;
-        heroBgImage.style.transform = 'translateY(' + offset + 'px)';
+        // Offset is based on the divider's own position in the viewport
+        // (not raw page scroll position), so it's bounded and starts at 0
+        // as the strip scrolls into view — avoids the image outrunning the
+        // clipped mountain shape it's masked into.
+        var raw = (window.innerHeight - rect.top) * 0.12;
+        var offset = Math.max(-40, Math.min(40, raw - 20));
+        dividerImage.style.transform = 'translateY(' + offset + 'px)';
       }
       ticking = false;
     };
