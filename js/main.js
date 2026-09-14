@@ -16,26 +16,36 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Divider-strip parallax: the hero photo itself stays solid/static;
-  // instead the thin photo strip below it shifts slightly slower than the
-  // page scrolls, so it reads as a moving layer peeking through as you
-  // scroll by. Skipped entirely for visitors who've asked for reduced motion.
-  var dividerImage = document.querySelector('.mountain-divider-image');
+  // instead each thin photo strip between sections shifts slightly slower
+  // than the page scrolls, so it reads as a moving layer peeking through as
+  // you scroll by. The page can have more than one of these strips (e.g. one
+  // below the hero, another below "How We Help"), so we track every
+  // .mountain-divider on the page rather than assuming just one.
+  // Skipped entirely for visitors who've asked for reduced motion.
+  var dividerPairs = [];
+  document.querySelectorAll('.mountain-divider').forEach(function (section) {
+    var image = section.querySelector('.mountain-divider-image');
+    if (image) {
+      dividerPairs.push({ section: section, image: image });
+    }
+  });
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (dividerImage && !prefersReducedMotion) {
-    var dividerSection = document.querySelector('.mountain-divider');
+  if (dividerPairs.length && !prefersReducedMotion) {
     var ticking = false;
     var updateParallax = function () {
-      var rect = dividerSection.getBoundingClientRect();
-      // Only bother once the divider has scrolled at least partly into view.
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        // Offset is based on the divider's own position in the viewport
-        // (not raw page scroll position), so it's bounded and starts at 0
-        // as the strip scrolls into view — avoids the image outrunning the
-        // strip's cropped viewing window.
-        var raw = (window.innerHeight - rect.top) * 0.12;
-        var offset = Math.max(-35, Math.min(35, raw - 20));
-        dividerImage.style.transform = 'translateY(' + offset + 'px)';
-      }
+      dividerPairs.forEach(function (pair) {
+        var rect = pair.section.getBoundingClientRect();
+        // Only bother once the divider has scrolled at least partly into view.
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          // Offset is based on the divider's own position in the viewport
+          // (not raw page scroll position), so it's bounded and starts at 0
+          // as the strip scrolls into view — avoids the image outrunning the
+          // strip's cropped viewing window.
+          var raw = (window.innerHeight - rect.top) * 0.12;
+          var offset = Math.max(-35, Math.min(35, raw - 20));
+          pair.image.style.transform = 'translateY(' + offset + 'px)';
+        }
+      });
       ticking = false;
     };
     window.addEventListener('scroll', function () {

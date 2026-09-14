@@ -225,6 +225,15 @@ section { padding: 72px 0; }
    --blue-300 used elsewhere for on-navy eyebrows (e.g. "How It Works"). */
 .hero .eyebrow { color: var(--blue-300); }
 .hero .btn-primary { background: var(--blue-300); }
+/* Rollover needs to read as an unmistakable change, not a subtle shade
+   shift, for visitors who have trouble distinguishing close colors —
+   swap to a solid white pill with a bright-blue ring/glow instead of a
+   small background tweak. */
+.hero .btn-primary:hover {
+  background: var(--white);
+  color: var(--navy-900);
+  box-shadow: 0 0 0 3px var(--blue-300), 0 10px 24px rgba(65, 128, 229, 0.45);
+}
 .hero .check-list li::before { background: var(--blue-300); }
 .hero-grid {
   display: grid;
@@ -266,6 +275,33 @@ section { padding: 72px 0; }
   background-size: cover;
   background-position: center;
   will-change: transform;
+}
+
+/* "How We Help" section (homepage only) — swaps the flat .bg-sand color for
+   a static stone/marble photo, kept behind a light sand-toned wash so the
+   navy heading and white plan-tile cards stay legible on top. This does NOT
+   touch .bg-sand itself, which is still used as a plain color elsewhere. */
+.plan-section-photo {
+  position: relative;
+  overflow: hidden;
+}
+.plan-section-photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.plan-section-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(239, 236, 229, 0.7);
+  z-index: 1;
+}
+.plan-section-photo > .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* ===== Cards / grids ===== */
