@@ -213,18 +213,19 @@ section { padding: 72px 0; }
 .hero-bg-tint {
   position: absolute;
   inset: 0;
-  /* Extra darkening pooled over the upper-left corner, where the eyebrow
-     and headline sit, so the busy wood-grain photo can't wash out the text
-     — plus a slightly stronger overall tint than before. */
+  /* Near-black, near-opaque pool over the upper-left corner (eyebrow +
+     headline), fading into a darker overall navy tint (more black mixed
+     into the blue than before) elsewhere. */
   background:
-    radial-gradient(ellipse 720px 520px at 0% 0%, rgba(8,15,26,0.55) 0%, rgba(8,15,26,0) 62%),
-    linear-gradient(180deg, rgba(20,36,58,0.92) 0%, rgba(37,71,125,0.84) 100%);
+    radial-gradient(ellipse 760px 560px at 0% 0%, rgba(3,6,11,0.82) 0%, rgba(3,6,11,0) 68%),
+    linear-gradient(180deg, rgba(8,14,24,0.95) 0%, rgba(20,36,60,0.90) 100%);
 }
 .hero .container { position: relative; z-index: 2; }
-/* Lighter blue specifically for the hero eyebrow — the default eyebrow
-   blue (--blue-500) doesn't have enough contrast against the dark,
-   photo-backed hero to stay easily readable. */
-.hero .eyebrow { color: #cfe0fa; }
+/* Brighter accent blue for the hero's headline elements — matches the
+   --blue-300 used elsewhere for on-navy eyebrows (e.g. "How It Works"). */
+.hero .eyebrow { color: var(--blue-300); }
+.hero .btn-primary { background: var(--blue-300); }
+.hero .check-list li::before { background: var(--blue-300); }
 .hero-grid {
   display: grid;
   gap: 40px;
