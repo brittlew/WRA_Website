@@ -106,8 +106,11 @@ section { padding: 72px 0; }
 .btn-primary:hover { background: var(--navy-800); }
 .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.6); }
 .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
-.btn-navy { background: var(--navy-800); color: var(--white); }
-.btn-navy:hover { background: var(--navy-900); }
+.btn-navy { background: var(--navy-900); color: var(--white); }
+.btn-navy:hover {
+  background: var(--blue-300);
+  box-shadow: 0 6px 18px rgba(65, 128, 229, 0.45);
+}
 .btn-ghost-navy { background: transparent; color: var(--navy-800); border-color: var(--navy-800); }
 .btn-ghost-navy:hover { background: var(--navy-800); color: var(--white); }
 .btn-lg { padding: 16px 34px; font-size: 1.12rem; }
