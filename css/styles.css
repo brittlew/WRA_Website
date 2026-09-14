@@ -395,8 +395,18 @@ section { padding: 72px 0; }
   transition: transform 0.15s ease, box-shadow .15s ease;
 }
 .plan-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.plan-tile-icon { color: var(--navy-800); margin-bottom: 20px; }
-.plan-tile-icon svg { width: 44px; height: 44px; display: block; }
+/* Square, black-and-white lead photo in place of the old line-icon —
+   spans the same width as the card's text/content, cropped to a 1:1 square
+   regardless of the source photo's native proportions. */
+.plan-tile-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  filter: grayscale(100%);
+}
 .plan-tile > a { text-decoration: none; }
 .plan-tile h3 {
   color: var(--blue-300);
