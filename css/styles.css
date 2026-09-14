@@ -213,9 +213,18 @@ section { padding: 72px 0; }
 .hero-bg-tint {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,36,58,0.90) 0%, rgba(37,71,125,0.80) 100%);
+  /* Extra darkening pooled over the upper-left corner, where the eyebrow
+     and headline sit, so the busy wood-grain photo can't wash out the text
+     — plus a slightly stronger overall tint than before. */
+  background:
+    radial-gradient(ellipse 720px 520px at 0% 0%, rgba(8,15,26,0.55) 0%, rgba(8,15,26,0) 62%),
+    linear-gradient(180deg, rgba(20,36,58,0.92) 0%, rgba(37,71,125,0.84) 100%);
 }
 .hero .container { position: relative; z-index: 2; }
+/* Lighter blue specifically for the hero eyebrow — the default eyebrow
+   blue (--blue-500) doesn't have enough contrast against the dark,
+   photo-backed hero to stay easily readable. */
+.hero .eyebrow { color: #cfe0fa; }
 .hero-grid {
   display: grid;
   gap: 40px;
@@ -237,24 +246,22 @@ section { padding: 72px 0; }
 .hero-stats .stat-num { font-family: var(--font-display); font-size: 2.1rem; color: var(--white); font-weight: 700; }
 .hero-stats .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
 
-/* Mountain divider motif: a photo clipped into the same jagged mountain
-   silhouette that used to be a flat SVG fill. The photo layer inside is
-   oversized and shifted by JS scroll (see js/main.js) for a parallax feel —
-   this is the "peek of a moving layer below a solid section" effect. */
+/* Divider strip: a plain rectangular photo peeking between the hero and the
+   next section. The photo layer inside is oversized and shifted by JS
+   scroll (see js/main.js) for a subtle parallax feel as it scrolls by. */
 .mountain-divider {
   position: relative;
   width: 100%;
-  height: 130px;
+  height: 65px;
   overflow: hidden;
   background: var(--sand-100);
-  clip-path: polygon(0% 100%, 12.5% 18.75%, 21.667% 68.75%, 33.333% 6.25%, 43.333% 68.75%, 54.167% 31.25%, 66.667% 78.125%, 79.167% 15.625%, 90% 62.5%, 100% 28.125%, 100% 100%);
 }
 .mountain-divider-image {
   position: absolute;
   left: 0;
   right: 0;
-  top: -35%;
-  height: 170%;
+  top: -60%;
+  height: 220%;
   background-size: cover;
   background-position: center;
   will-change: transform;

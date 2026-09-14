@@ -15,11 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Mountain-divider parallax: the hero photo itself stays solid/static;
-  // instead the divider strip below it (clipped into the mountain silhouette)
-  // shifts slightly slower than the page scrolls, so it reads as a moving
-  // layer peeking out beneath the solid hero. Skipped entirely for visitors
-  // who've asked for reduced motion.
+  // Divider-strip parallax: the hero photo itself stays solid/static;
+  // instead the thin photo strip below it shifts slightly slower than the
+  // page scrolls, so it reads as a moving layer peeking through as you
+  // scroll by. Skipped entirely for visitors who've asked for reduced motion.
   var dividerImage = document.querySelector('.mountain-divider-image');
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (dividerImage && !prefersReducedMotion) {
@@ -32,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Offset is based on the divider's own position in the viewport
         // (not raw page scroll position), so it's bounded and starts at 0
         // as the strip scrolls into view — avoids the image outrunning the
-        // clipped mountain shape it's masked into.
+        // strip's cropped viewing window.
         var raw = (window.innerHeight - rect.top) * 0.12;
-        var offset = Math.max(-40, Math.min(40, raw - 20));
+        var offset = Math.max(-35, Math.min(35, raw - 20));
         dividerImage.style.transform = 'translateY(' + offset + 'px)';
       }
       ticking = false;
