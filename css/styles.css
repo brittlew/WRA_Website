@@ -237,7 +237,7 @@ section { padding: 72px 0; }
   color: var(--navy-900);
   box-shadow: 0 0 0 3px var(--blue-300), 0 10px 24px rgba(65, 128, 229, 0.45);
 }
-.hero .check-list li::before { background: var(--blue-300); }
+.hero .check-list li::before { background-color: var(--blue-300); }
 .hero-grid {
   display: grid;
   gap: 40px;
@@ -342,6 +342,39 @@ section { padding: 72px 0; }
 }
 .card .icon-badge svg { width: 26px; height: 26px; }
 
+/* Square, black-and-white lead photo above "Not sure where to start?" —
+   same treatment as the plan-tile photos, reusing the site's established
+   pattern. */
+.consult-card-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  filter: grayscale(100%);
+}
+
+/* "Why Work With Us" content block, promoted to its own card so it can
+   carry the topographic-map texture behind the text — kept light enough
+   that the existing navy/blue text and checklist stay fully legible. */
+.why-us-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 40px 36px;
+  background: var(--white);
+}
+.why-us-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.why-us-card-content { position: relative; z-index: 1; }
+
 .plan-card {
   position: relative;
   border-radius: 12px;
@@ -407,6 +440,16 @@ section { padding: 72px 0; }
   margin-bottom: 22px;
   filter: grayscale(100%);
 }
+/* Desktop only: shrink to half width and anchor top-left of the card
+   (instead of spanning the full text width) — mobile keeps the full-width
+   version above since it wasn't asked to change. */
+@media (min-width: 700px) {
+  .plan-tile-photo {
+    width: 50%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
 .plan-tile > a { text-decoration: none; }
 .plan-tile h3 {
   color: var(--blue-300);
@@ -449,25 +492,26 @@ section { padding: 72px 0; }
 .check-list { list-style: none; margin: 0; padding: 0; }
 .check-list li {
   position: relative;
-  padding-left: 30px;
+  padding-left: 34px;
   margin-bottom: 12px;
   color: var(--ink);
   font-weight: 600;
   font-size: 1.05rem;
 }
+/* A bold, fully-centered checkmark glyph (not a hairline CSS-border hack) —
+   easier for low-vision/older readers to see at a glance. Circle color is
+   still the site's existing blue-500 (overridden to blue-300 on navy
+   backgrounds below); only the checkmark rendering itself changed. */
 .check-list li::before {
   content: "";
-  position: absolute; left: 0; top: 4px;
-  width: 18px; height: 18px;
+  position: absolute; left: 0; top: 3px;
+  width: 22px; height: 22px;
   border-radius: 50%;
-  background: var(--blue-500);
-}
-.check-list li::after {
-  content: "";
-  position: absolute; left: 5px; top: 8px;
-  width: 8px; height: 4px;
-  border-left: 2px solid white; border-bottom: 2px solid white;
-  transform: rotate(-45deg);
+  background-color: var(--blue-500);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 13 10 18 19 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 13px 13px;
 }
 
 /* Testimonial / trust */
@@ -476,8 +520,12 @@ section { padding: 72px 0; }
   color: var(--ink-soft); font-weight: 600; letter-spacing: 0.02em;
 }
 
-/* CTA band */
+/* CTA band — marble-texture photo behind a blue-500 tint (keeps the band's
+   existing brand-blue identity and white-text legibility while letting the
+   texture show through, instead of a flat color fill). */
 .cta-band {
+  position: relative;
+  overflow: hidden;
   background: var(--blue-500);
   color: var(--white);
   border-radius: 14px;
@@ -486,6 +534,21 @@ section { padding: 72px 0; }
   gap: 24px;
   align-items: center;
 }
+.cta-band-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(47, 92, 165, 0.82);
+  z-index: 1;
+}
+.cta-band-content { position: relative; z-index: 2; }
 .cta-band h2, .cta-band p { color: var(--white); }
 @media (min-width: 780px) {
   .cta-band { grid-template-columns: 1.4fr auto; }
