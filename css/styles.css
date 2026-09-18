@@ -355,25 +355,45 @@ section { padding: 72px 0; }
   filter: grayscale(100%);
 }
 
-/* "Why Work With Us" content block, promoted to its own card so it can
-   carry the topographic-map texture behind the text — kept light enough
-   that the existing navy/blue text and checklist stay fully legible. */
+/* "Why Work With Us" content block — a plain card (matching the site's
+   other .card elements) that sits on top of the section's own background
+   photo (see .section-photo below), rather than carrying the photo itself. */
 .why-us-card {
-  position: relative;
-  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 40px 36px;
   background: var(--white);
 }
-.why-us-card-bg {
+
+/* Reusable section-level background-photo treatment: the photo sits behind
+   the whole section (visible in the white space around/between the cards
+   inside it), tinted light enough that any cards floating on top of it —
+   which stay fully opaque — read clearly. Mirrors the same pattern already
+   used for the "How We Help" section's .plan-section-photo, just with a
+   white (not sand-toned) wash to match these sections' plain white
+   background. */
+.section-photo {
+  position: relative;
+  overflow: hidden;
+}
+.section-photo-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   z-index: 0;
 }
-.why-us-card-content { position: relative; z-index: 1; }
+.section-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.72);
+  z-index: 1;
+}
+.section-photo > .container {
+  position: relative;
+  z-index: 2;
+}
 
 .plan-card {
   position: relative;
@@ -428,9 +448,10 @@ section { padding: 72px 0; }
   transition: transform 0.15s ease, box-shadow .15s ease;
 }
 .plan-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-/* Square, black-and-white lead photo in place of the old line-icon —
-   spans the same width as the card's text/content, cropped to a 1:1 square
-   regardless of the source photo's native proportions. */
+/* Lead photo in place of the old line-icon — square on mobile, cropped to a
+   1:1 square regardless of the source photo's native proportions. Partial
+   (not full) grayscale, so it reads as muted/on-brand rather than stark
+   black-and-white. */
 .plan-tile-photo {
   display: block;
   width: 100%;
@@ -438,16 +459,16 @@ section { padding: 72px 0; }
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 22px;
-  filter: grayscale(100%);
+  filter: grayscale(70%);
 }
-/* Desktop only: shrink to half width and anchor top-left of the card
-   (instead of spanning the full text width) — mobile keeps the full-width
-   version above since it wasn't asked to change. */
+/* Desktop only: widen into a horizontal rectangle spanning the full card
+   width instead of the mobile square — aspect-ratio 2/1 at full width keeps
+   the same photo height as the earlier half-width square treatment while
+   letting it span the card. */
 @media (min-width: 700px) {
   .plan-tile-photo {
-    width: 50%;
-    margin-left: 0;
-    margin-right: auto;
+    width: 100%;
+    aspect-ratio: 2 / 1;
   }
 }
 .plan-tile > a { text-decoration: none; }
@@ -520,12 +541,10 @@ section { padding: 72px 0; }
   color: var(--ink-soft); font-weight: 600; letter-spacing: 0.02em;
 }
 
-/* CTA band — marble-texture photo behind a blue-500 tint (keeps the band's
-   existing brand-blue identity and white-text legibility while letting the
-   texture show through, instead of a flat color fill). */
+/* CTA band — a plain solid-blue card (its original flat-color treatment)
+   that sits on top of its section's own background photo (see
+   .section-photo above), rather than carrying the photo itself. */
 .cta-band {
-  position: relative;
-  overflow: hidden;
   background: var(--blue-500);
   color: var(--white);
   border-radius: 14px;
@@ -534,21 +553,6 @@ section { padding: 72px 0; }
   gap: 24px;
   align-items: center;
 }
-.cta-band-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-.cta-band::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(47, 92, 165, 0.82);
-  z-index: 1;
-}
-.cta-band-content { position: relative; z-index: 2; }
 .cta-band h2, .cta-band p { color: var(--white); }
 @media (min-width: 780px) {
   .cta-band { grid-template-columns: 1.4fr auto; }
