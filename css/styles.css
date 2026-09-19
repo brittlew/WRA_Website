@@ -366,12 +366,11 @@ section { padding: 72px 0; }
 }
 
 /* Reusable section-level background-photo treatment: the photo sits behind
-   the whole section (visible in the white space around/between the cards
-   inside it), tinted light enough that any cards floating on top of it —
-   which stay fully opaque — read clearly. Mirrors the same pattern already
-   used for the "How We Help" section's .plan-section-photo, just with a
-   white (not sand-toned) wash to match these sections' plain white
-   background. */
+   the whole section at full color/contrast (no tint), visible in the white
+   space around/between the cards inside it. The cards themselves stay fully
+   opaque, so legibility isn't a concern even with no wash over the photo.
+   Mirrors the same pattern already used for the "How We Help" section's
+   .plan-section-photo, minus that section's sand-toned wash. */
 .section-photo {
   position: relative;
   overflow: hidden;
@@ -382,13 +381,6 @@ section { padding: 72px 0; }
   background-size: cover;
   background-position: center;
   z-index: 0;
-}
-.section-photo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.72);
-  z-index: 1;
 }
 .section-photo > .container {
   position: relative;
@@ -449,8 +441,7 @@ section { padding: 72px 0; }
 }
 .plan-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 /* Lead photo in place of the old line-icon — square on mobile, cropped to a
-   1:1 square regardless of the source photo's native proportions. Partial
-   (not full) grayscale, so it reads as muted/on-brand rather than stark
+   1:1 square regardless of the source photo's native proportions. Full
    black-and-white. */
 .plan-tile-photo {
   display: block;
@@ -459,7 +450,7 @@ section { padding: 72px 0; }
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 22px;
-  filter: grayscale(70%);
+  filter: grayscale(100%);
 }
 /* Desktop only: widen into a horizontal rectangle spanning the full card
    width instead of the mobile square — aspect-ratio 2/1 at full width keeps
