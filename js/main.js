@@ -2,18 +2,65 @@
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.main-nav');
+
+  // Position the open mobile nav panel as a fixed overlay sized to the
+  // actual rendered header height (not a hardcoded guess), so it scrolls
+  // independently of the page instead of being swallowed by the sticky
+  // site-header's box.
+  function positionMobileNav() {
+    if (!nav || window.innerWidth >= 860 || !nav.classList.contains('open')) {
+      if (nav) { nav.style.top = ''; nav.style.height = ''; }
+      return;
+    }
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    var headerBottom = header.getBoundingClientRect().bottom;
+    nav.style.top = headerBottom + 'px';
+    nav.style.height = 'calc(100vh - ' + headerBottom + 'px)';
+  }
+
+  function collapseAllNavCats() {
+    if (!nav) return;
+    nav.querySelectorAll('.nav-cat-links.open').forEach(function (el) { el.classList.remove('open'); });
+    nav.querySelectorAll('.nav-cat-toggle[aria-expanded="true"]').forEach(function (el) { el.setAttribute('aria-expanded', 'false'); });
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       var isOpen = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        positionMobileNav();
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+        nav.style.top = '';
+        nav.style.height = '';
+        collapseAllNavCats();
+      }
     });
+    window.addEventListener('resize', positionMobileNav);
     nav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        nav.style.top = '';
+        nav.style.height = '';
       });
     });
   }
+
+  // Per-category expand/collapse (mobile only — hidden via CSS on desktop).
+  document.querySelectorAll('.nav-cat-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var links = btn.closest('.nav-cat').querySelector('.nav-cat-links');
+      var isOpen = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
 
   // Divider-strip parallax: the hero photo itself stays solid/static;
   // instead each thin photo strip between sections shifts slightly slower

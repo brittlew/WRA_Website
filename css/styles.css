@@ -187,7 +187,7 @@ section { padding: 72px 0; }
 @media (max-width: 859px) {
   .main-nav { display: none; }
   .main-nav.open { display: block; }
-  .main-nav .container { flex-direction: column; gap: 0; align-items: stretch; text-align: center; }
+  .main-nav .container { flex-direction: column; gap: 0; align-items: stretch; text-align: left; }
 }
 
 /* ===== Hero ===== */
@@ -756,6 +756,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   }
 }
 .nav-dropdown-col { display: flex; flex-direction: column; gap: 2px; }
+.nav-cat-row { display: block; }
 .nav-dropdown-heading {
   display: block;
   font-weight: 700;
@@ -764,7 +765,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   margin-bottom: 6px;
   border-bottom: 1px solid var(--border);
 }
-.nav-dropdown-col a:not(.nav-dropdown-heading) {
+.nav-cat-links a {
   display: block;
   padding: 5px 0 !important;
   font-size: 0.9rem;
@@ -773,10 +774,36 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   border-bottom: none !important;
   text-align: left;
 }
-.nav-dropdown-col a:not(.nav-dropdown-heading):hover {
+.nav-cat-links a:hover {
   color: var(--blue-500) !important;
   text-decoration: underline;
 }
+/* Small "Part" sub-label under a nav link, e.g. "Parts A & B" under "Medicare" */
+.nav-sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  opacity: 0.78;
+  margin-top: 1px;
+}
+
+/* Mobile-only per-category expand/collapse toggle (chevron button next to
+   each dropdown heading). Hidden on desktop, where the whole dropdown
+   always shows on hover. */
+.nav-cat-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  margin: 0;
+  cursor: pointer;
+  color: var(--navy-800);
+  flex-shrink: 0;
+}
+.nav-cat-toggle svg { width: 16px; height: 16px; display: block; transition: transform 0.2s ease; }
+.nav-cat-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+
 @media (max-width: 859px) {
   .nav-dropdown-menu {
     display: block;
@@ -785,6 +812,32 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
     border: none;
     padding: 4px 0 4px 20px;
   }
-  .nav-dropdown-col { margin-bottom: 10px; }
-  .nav-dropdown-heading { border-bottom: none; padding: 8px 0 2px !important; }
+  .nav-dropdown-col { margin-bottom: 0; }
+  .nav-dropdown-heading { border-bottom: none; padding: 8px 0 2px !important; text-align: left; }
+
+  /* Each category (heading + its links) becomes its own collapsible row,
+     with a thin divider line above every category except the very first. */
+  .nav-cat-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .nav-cat-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-cat-links { display: none; padding-bottom: 8px; }
+  .nav-cat-links.open { display: block; }
+  .nav-cat { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; }
+  .nav-dropdown-col:first-child .nav-cat:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+  /* The open mobile menu becomes its own fixed, independently-scrolling
+     panel instead of inline content inside the sticky site-header — fixes
+     the bug where the panel's content was too tall for the sticky header
+     box, making window scroll appear to move the page behind the menu
+     instead of scrolling the menu itself. Top/height are set by JS to the
+     real rendered header height. */
+  .main-nav.open {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-shadow: 0 16px 28px rgba(15, 30, 60, 0.16);
+  }
 }
