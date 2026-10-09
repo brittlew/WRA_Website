@@ -767,7 +767,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
 }
 .nav-cat-links a {
   display: block;
-  padding: 5px 0 !important;
+  padding: 6px 0 2px !important;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--ink-soft) !important;
@@ -778,14 +778,19 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   color: var(--blue-500) !important;
   text-decoration: underline;
 }
-/* Small "Part" sub-label under a nav link, e.g. "Parts A & B" under "Medicare" */
+/* Small "Part" sub-label under a nav link, e.g. "Parts A & B" under "Medicare" —
+   pulled in tight under its parent link (negative margin-top) so the two
+   read as one paired unit, with the breathing room before the next item
+   added after the sub-label instead (margin-bottom). */
 .nav-sub {
   display: block;
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--ink-soft);
   opacity: 0.78;
-  margin-top: 1px;
+  line-height: 1.25;
+  margin-top: -3px;
+  margin-bottom: 4px;
 }
 
 /* Mobile-only per-category expand/collapse toggle (chevron button next to
@@ -803,6 +808,19 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
 }
 .nav-cat-toggle svg { width: 16px; height: 16px; display: block; transition: transform 0.2s ease; }
 .nav-cat-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* Desktop only: a thin rounded box around each category group within the
+   Plan Options dropdown, so the 4 categories read as distinct cards rather
+   than one long list. Mobile keeps its own divider-line treatment instead
+   (added below), since boxes add clutter at that width. */
+@media (min-width: 860px) {
+  .nav-cat {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px 16px;
+  }
+  .nav-dropdown-col .nav-cat + .nav-cat { margin-top: 14px; }
+}
 
 @media (max-width: 859px) {
   .nav-dropdown-menu {
