@@ -755,6 +755,12 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
     display: grid;
   }
 }
+/* Single-category dropdown (e.g. Quote Options) — one 230px column instead
+   of the 3-column Plan Options grid, so the menu doesn't render as a wide,
+   mostly-empty box. */
+@media (min-width: 860px) {
+  .nav-dropdown-menu--single { grid-template-columns: 230px; }
+}
 .nav-dropdown-col { display: flex; flex-direction: column; gap: 2px; }
 .nav-cat-row { display: block; }
 .nav-dropdown-heading {
