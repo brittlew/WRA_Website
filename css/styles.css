@@ -398,7 +398,7 @@ section { padding: 72px 0; }
   padding: 24px;
   box-shadow: var(--shadow-sm);
   background-color: var(--navy-900);
-  background-image: url("images/topo-patterns/topo-navy.jpg");
+  background-image: url("../images/topo-patterns/topo-navy.jpg");
   background-size: cover;
   background-position: center;
   transition: transform 0.15s ease, box-shadow .15s ease;
