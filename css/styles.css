@@ -188,6 +188,9 @@ section { padding: 72px 0; }
   .main-nav { display: none; }
   .main-nav.open { display: block; }
   .main-nav .container { flex-direction: column; gap: 0; align-items: stretch; text-align: left; }
+  /* Bolder top-level items (Home, Plan Options, Company, Resources, Quote
+     Options) in the mobile menu, for easier scanning by older visitors. */
+  .main-nav a { font-weight: 700; }
 }
 
 /* ===== Hero ===== */
@@ -883,6 +886,11 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   .nav-cat-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .nav-cat-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .nav-cat-links { display: none; padding-bottom: 8px; }
+  /* Quote Options has only one category, whose heading would otherwise just
+     repeat the "Quote Options" label already shown above it — hide that
+     redundant inner heading row on mobile; its own toggle arrow (added as a
+     sibling of the top-level link) now expands the same links directly. */
+  .nav-dropdown-menu--single .nav-cat-row { display: none; }
   .nav-cat-links.open { display: block; }
   .nav-cat { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; }
   .nav-dropdown-col:first-child .nav-cat:first-child { border-top: none; padding-top: 0; margin-top: 0; }

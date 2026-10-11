@@ -52,11 +52,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Per-category expand/collapse (mobile only — hidden via CSS on desktop).
+  // Most toggle buttons live inside a ".nav-cat" alongside their links (the
+  // multi-category Plan Options pattern). The single-category Quote Options
+  // toggle instead sits at the top level, next to the main nav link, so it
+  // falls back to its closest ".nav-dropdown" to find the links to expand.
   document.querySelectorAll('.nav-cat-toggle').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var links = btn.closest('.nav-cat').querySelector('.nav-cat-links');
+      var container = btn.closest('.nav-cat') || btn.closest('.nav-dropdown');
+      var links = container.querySelector('.nav-cat-links');
       var isOpen = links.classList.toggle('open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
