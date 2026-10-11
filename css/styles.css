@@ -691,6 +691,17 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   aspect-ratio: 16/9;
   margin-bottom: 18px;
 }
+/* Resource/article card lead photo — black-and-white treatment matching
+   the plan-tile and consult-card photos elsewhere on the site. */
+.resource-card-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  filter: grayscale(100%);
+}
 .article-hero-image {
   aspect-ratio: 2/1;
   margin-bottom: 8px;
