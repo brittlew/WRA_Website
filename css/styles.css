@@ -707,6 +707,17 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   margin-bottom: 8px;
   font-size: 1rem;
 }
+/* Article hero lead photo — same black-and-white treatment as the resource
+   card and plan-tile photos. */
+.article-hero-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  filter: grayscale(100%);
+}
 
 /* Utility */
 .mt-0 { margin-top: 0; } .mb-0 { margin-bottom: 0; }
