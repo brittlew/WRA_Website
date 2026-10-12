@@ -763,6 +763,19 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
 .topic-explain-box p { margin: 0; color: var(--ink); }
 .topic-explain-box p strong { color: var(--navy-800); }
 
+/* Callout note inside a "Details" prose section (e.g. an HSA rule or a
+   late-enrollment-penalty warning) — set apart from the regular bullet
+   list above it with a left accent border. */
+.detail-note {
+  background: var(--sand-100);
+  border-left: 4px solid var(--navy-800);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 18px 0 0;
+}
+.detail-note p { margin: 0; color: var(--ink); }
+.detail-note p strong { color: var(--navy-800); }
+
 /* Anchor-scroll offset: when a bullet/preview link jumps to a #topic-block
    anchor, this keeps the topic card's header clear of the sticky site
    header instead of landing underneath it. Values match the site header's
