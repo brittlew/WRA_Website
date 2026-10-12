@@ -763,6 +763,22 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
 .topic-explain-box p { margin: 0; color: var(--ink); }
 .topic-explain-box p strong { color: var(--navy-800); }
 
+/* Scopes the bullet lists, sub-labels and callout notes used within a
+   "Details" prose section (e.g. the Medicare A&B enrollment-rules content)
+   so Part A / Part B stay the real headings (h3) and everything under them
+   — the "When You..." labels, list items, and notes — reads as body
+   copy, matching the rest of the page's gray text and font size. */
+.details-prose h3 { margin-top: 1.6em; }
+.details-prose h3:first-of-type { margin-top: 0; }
+.details-prose .detail-subhead {
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 1.3em 0 0.4em;
+}
+.details-prose ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+.details-prose li { margin-bottom: 10px; color: var(--ink-soft); }
+.details-prose li:last-child { margin-bottom: 0; }
+
 /* Callout note inside a "Details" prose section (e.g. an HSA rule or a
    late-enrollment-penalty warning) — set apart from the regular bullet
    list above it with a left accent border. */
@@ -771,9 +787,9 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-300); 
   border-left: 4px solid var(--navy-800);
   border-radius: 6px;
   padding: 16px 20px;
-  margin: 18px 0 0;
+  margin: 18px 0 28px;
 }
-.detail-note p { margin: 0; color: var(--ink); }
+.detail-note p { margin: 0; color: var(--ink-soft); }
 .detail-note p strong { color: var(--navy-800); }
 
 /* Anchor-scroll offset: when a bullet/preview link jumps to a #topic-block
