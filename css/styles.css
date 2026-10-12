@@ -510,6 +510,11 @@ section { padding: 72px 0; }
 }
 .topic-block-header { background: var(--navy-800); padding: 18px 30px; }
 .topic-block-header h3 { color: var(--white); margin: 0; }
+/* Sub-label inside a topic-block-header, e.g. "Parts A & B" under "Medicare" —
+   reuses .nav-sub's spacing/sizing but needs a light color here since the
+   header background is dark navy (nav-sub's default ink-soft is for light
+   backgrounds). */
+.topic-block-header h3 .nav-sub { color: var(--white); opacity: 0.7; }
 .topic-block-body { padding: 30px; }
 .topic-block-intro { font-size: 1.05rem; }
 .topic-block-grid { display: grid; gap: 24px; }
